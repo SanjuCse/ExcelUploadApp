@@ -12,7 +12,7 @@ import com.sanju.service.TrackingDetailsService;
 import lombok.extern.java.Log;
 
 @Log
-@Component
+//@Component
 public class TrackingDetailsRunner implements CommandLineRunner {
 
 	@Autowired
@@ -20,10 +20,10 @@ public class TrackingDetailsRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<TrackingDetails> savedTrackingDetails = trackingDetailsService
-				.saveTrackingDetails("C:\\Users\\sanju\\Downloads\\Tracking_details.xlsx");
-		long count = savedTrackingDetails.stream().count();
-		log.info("Data saved with " + count + " records");
+//		List<TrackingDetails> savedTrackingDetails = trackingDetailsService
+//				.saveTrackingDetails("C:\\Users\\sanju\\Downloads\\Tracking_details.xlsx");
+//		long count = savedTrackingDetails.stream().count();
+//		log.info("Data saved with " + count + " records");
 	}
 
 }

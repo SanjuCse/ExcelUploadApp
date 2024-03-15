@@ -1,6 +1,7 @@
 package com.sanju.service;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -19,11 +20,11 @@ public class TrackingDetailsService {
 	@Autowired
 	private ExcelUtil excelUtil;
 
-	public List<TrackingDetails> saveTrackingDetails(String excelFilePath)
+	public List<TrackingDetails> saveTrackingDetails(InputStream inputStream)
 			throws EncryptedDocumentException, IOException {
 		List<TrackingDetails> trackingDetailsData = null;
-		if (excelFilePath != null && !excelFilePath.isBlank()) {
-			trackingDetailsData = excelUtil.getTrackingDetailsData(excelFilePath);
+		if (inputStream != null) {
+			trackingDetailsData = excelUtil.getTrackingDetailsData(inputStream);
 		}
 		if (trackingDetailsData != null && trackingDetailsData.size() != 0) {
 			trackingDetailsData = trackingDetailsRepo.saveAll(trackingDetailsData);

@@ -1,8 +1,7 @@
 package com.sanju.util;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,9 +23,9 @@ public class ExcelUtil {
 	private static final String dateFormat = "dd.MM.yyyy";
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
 
-	public List<TrackingDetails> getTrackingDetailsData(String excelFilePath)
+	public List<TrackingDetails> getTrackingDetailsData(InputStream inputStream)
 			throws EncryptedDocumentException, IOException {
-		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+//		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
 		Workbook workbook = WorkbookFactory.create(inputStream);
 		Sheet sheet = workbook.getSheetAt(0);
 		List<TrackingDetails> trackingDetailsList = new ArrayList<>();
