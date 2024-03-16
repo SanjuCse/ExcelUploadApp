@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@taglib prefix="frm" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +18,29 @@
 </head>
 <body>
 <div class="container mt-5">
+	<c:if test="${!empty resultMsg}">
+		<c:set var="STATUS" value="${Status}" />
+		<c:set var="SUCCESS" value="Success" />
+		<c:set var="FAILURE" value="Failure" />
+		
+		
+<%-- 		<c:if test="${fn:toUpperCase(str1) eq fn:toUpperCase(str2)}"> --%>
+<!--     		Strings are equal ignoring case. -->
+<%-- 		</c:if> --%>
+		
+		<c:if test="${fn:toUpperCase(SUCCESS) eq fn:toUpperCase(STATUS)}">
+	        <div class="alert alert-success fade show alert-dismissible">
+	            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	            <span>${resultMsg}</span>
+	        </div>
+	    </c:if>
+		<c:if test="${fn:toUpperCase(FAILURE) eq fn:toUpperCase(STATUS)}">
+	        <div class="alert alert-danger fade show alert-dismissible">
+	            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	            <span>${resultMsg}</span>
+	        </div>
+	    </c:if>
+	</c:if>
     <h1 class="text-center text-success border rounded">Upload Excel Sheet</h1>
     <frm:form cssClass="form-control" enctype="multipart/form-data">
         <table class="table">
@@ -34,13 +60,6 @@
             </tbody>
         </table>
     </frm:form>
-<!-- 	<form action="/upload" method="post" enctype="multipart/form-data"> -->
-<!-- 		<button type="submit">Upload</button> -->
-<!-- 	</form> -->
-<!--     <div class="text-center mt-2"> -->
-<!--         <a class="btn btn-primary" href="emp_report"><span class="bi bi-database"></span> Report Page</a> -->
-<!--         <a class="btn btn-secondary" href="./"><span class="bi bi-house"></span> Home Page</a> -->
-<!--     </div> -->
 </div>
 </body>
 </html>
